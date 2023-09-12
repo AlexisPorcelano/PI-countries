@@ -1,10 +1,10 @@
+require("dotenv").config({ path: "./api/.env" });
 const axios = require("axios");
 const server = require("./src/server");
 const { conn } = require('./src/db.js');
-const PORT = 3001;
 
-conn.sync({ force: true }).then(() => {
-server.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-})
+conn.sync({ alter: true }).then(() => {
+  server.listen(3000, () => {
+    console.log(`Servidor en ejecución en el puerto 3000`);
+  });;
 }).catch(error => console.error(error))
